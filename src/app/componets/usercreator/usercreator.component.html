@@ -1,0 +1,51 @@
+
+<div class="card-img-top"> 
+  <form #personaform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">
+    <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="personService.selectperson._id"/>
+    <div class="form-group">
+      <label id="title">{{title}}
+        <div class="form-group">
+          <div>
+            <input type="text" name="username" id="username" #username="ngModel" [(ngModel)]="personService.selectperson.username" placeholder="Username"/>
+          </div>
+          <div>   
+            <input type="text" id="first_name" name="first_name" #first_name="ngModel" [(ngModel)]="personService.selectperson.first_name" placeholder="First name"/>
+            <input type="text" id="second_name" name="second_name" #second_name="ngModel" [(ngModel)]="personService.selectperson.second_name" placeholder="Second name"/>
+          </div>
+          <div>
+            <input type="text" id="first_lastname" name="first_lastname" #first_lastname="ngModel" [(ngModel)]="personService.selectperson.first_lastname" placeholder="First lastname"/>
+            <input type="text" id="second_lastname" name="second_lastname" #second_lastname="ngModel" [(ngModel)]="personService.selectperson.second_lastname" placeholder="Second lastname"/>
+          </div>
+          <div>
+            <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="personService.selectperson.email" placeholder="Email"/>
+            <input type="text" id="country" name="country" #country="ngModel" [(ngModel)]="personService.selectperson.country" placeholder="Country"/>
+          </div>
+          <div *ngIf="passwordInputVisible">
+            <input type="password" id="password" name="password" #password="ngModel" [(ngModel)]="personService.selectperson.password" placeholder="Password"/>
+            <input type="password" id="repassword" name="repassword" placeholder="Repit the password"/>
+          </div>
+          <div>
+            <input type="number" id="celphone" name="celphone" #celphone="ngModel" [(ngModel)]="personService.selectperson.celphone" placeholder="Celphone"/>
+            <input type="number" id="Rate_by_hour" name="Rate_by_hour" #Rate_by_hour="ngModel" [(ngModel)]="personService.selectperson.Rate_by_hour" placeholder="Rate by hour"/>
+          </div>
+          <div>   
+            <input type="number" id="Rate_by_mount" name="Rate_by_mount" #Rate_by_mount="ngModel" [(ngModel)]="personService.selectperson.Rate_by_mount" placeholder="Rate by mount"/>
+            <input type="number" id="idRol" name="idRol" #idRol="ngModel" [(ngModel)]="personService.selectperson.idRol" placeholder="idRol"/>
+          </div>
+          <div>   
+            <input type="text" id="github" name="github" #github="ngModel" [(ngModel)]="personService.selectperson.github" placeholder="Github"/>
+            <input type="text" id="linkedin" name="linkedin" #linkedin="ngModel" [(ngModel)]="personService.selectperson.linkedin" placeholder="Linkedin"/>
+          </div>
+          <input class="form-control" type="text" id="bitbucket" name="bitbucket" #bitbucket="ngModel" [(ngModel)]="personService.selectperson.bitbucket" placeholder="Bitbucket"/>
+        </div>
+        <div class="form-group">
+          <div id="btndiv">
+            <button class="btn btn-outline-primary btn-lg" *ngIf="singup" (click)="returnpage()">Return</button>
+            <button class="btn btn-outline-primary btn-lg" (click)="resetForm(personaform)">Clean   </button>
+            <button class="btn btn-outline-primary btn-lg" (click)="addperson(personaform)">Save </button>
+          </div>
+        </div>
+      </label>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,47 @@
+$break-large: 800px;
+$table-desktop-width: 30%;
+$table-mid-width: 70%;
+$table-mobile-width : 90%; 
+$table-th-size: xx-large;
+$table-content-fontsize : x-large;
+$input-width: 70%;
+
+
+@mixin drop-borders()
+    border-top: 10px;
+    border-left: 10px;
+    border-right: 10px;
+@mixin table-response()
+    @media screen and (max-width: $break-large)    
+        width: $table-mobile-width;
+    @media screen and (min-width: 800px)
+        width: $table-mid-width;
+    @media screen and (min-width: 1200px)
+        width: $table-desktop-width;  
+#tblogin
+    width: $table-desktop-width;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: white;
+    border-style: none !important;
+    font-size: $table-content-fontsize;
+    th
+        text-align: center;
+        font-size: $table-th-size;
+    td
+        border-top: none;    
+    @include table-response;   
+input 
+    background: #F8F9FB;
+    width: $input-width ; 
+    font-size: $table-content-fontsize;
+    @include drop-borders;
+#btnlog
+    width: 35%
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;   
+    border-radius: 0% ; 
+   

@@ -1,0 +1,33 @@
+@mixin center()
+    margin-left: auto;
+    margin-right: auto;    
+
+.card-img-top 
+    background-color: white;
+    width: 80%;
+    +center()
+    @media only screen and (max-width: 600px)
+        width: 100%;
+.form-group
+    font-size: xx-large;
+    text-align: center;
+    background-color: white;
+    +center()
+    input
+        width: 45%;
+        color: black;
+        font-size: medium;
+        margin-bottom: 1%;
+        margin-top: 1%;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        +center()
+#title
+    color: white;
+    width: 100%;
+    height: 100px;
+    font-size: xx-large;
+    background-color: #0091ea;
+
+

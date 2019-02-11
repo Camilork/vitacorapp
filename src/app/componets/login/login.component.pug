@@ -1,0 +1,42 @@
+form('#loginform'="ngForm",*ngIf='!sing') 
+    table(id="tblogin" class='table')
+        thead(class="bg-info text-white")
+            tr
+                th Log in
+        tbody(class='bg-light')   
+            tr
+                td 
+                    input(
+                        type="text", 
+                        name="username" ,
+                        placeholder="Username"
+                        #username="ngModel" , 
+                        [(ngModel)]="loginService.logina.username"
+                    )                
+            tr
+                td
+                    input(
+                        type="password", 
+                        name="password",
+                        placeholder="Password" 
+                        #password="ngModel", 
+                        [(ngModel)]="loginService.logina.password"
+                    )
+            tr
+                td
+                    input(
+                        id= "btnlog"
+                        type="button", 
+                        class="btn bg-success text-white", 
+                        value="Sing up", 
+                        (click)="singup()"
+                    )    
+                    input(
+                        id="btnlog"
+                        type="button", 
+                        class="btn bg-success text-white", 
+                        value="Log in", 
+                        (click)="logperson(loginform)"
+                    )
+div(*ngIf='sing' style="width:90%;margin-left: auto;margin-right: auto;")                    
+    app-usercreator((getUser)="this.singup()", [singup]='sing')              
