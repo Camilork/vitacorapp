@@ -17,11 +17,20 @@ import { Task } from '../../models/task'
 export class VitacorComponent implements OnInit {
   constructor(public vitacorService : VitacorService,public taskService : TaskService) { }
 
+  viewList = false
   idtask = null
   iddata = 0
 
   ngOnInit() { 
     this.getVita()
+  }
+
+  listViewer(){
+    if(this.viewList){
+      this.viewList = false;
+    }else{
+      this.viewList = true;
+    }
   }
 
   getVita(){
@@ -67,6 +76,7 @@ export class VitacorComponent implements OnInit {
     if(form){
       form.reset()
       this.vitacorService.selectvitacor = new Vita
+      this.getVita()
     }
   }
   

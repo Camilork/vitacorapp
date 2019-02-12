@@ -51,18 +51,7 @@ div(class="container-fluid text-center")
                             i(class="glyphicon glyphicon-pencil")
                         a((click)="deleteperson(person._id, personaform)")
                             i(class="glyphicon glyphicon-trash")    
-        div(class="col-sm-2 sidenav")
-            label(id='title') History
-            div(id="notifiView")
-                div(
-                    class="card dropdown-toggle notifi", 
-                    style="width:200px", 
-                    *ngFor="let not of notificacion"
-                )
-                    div(class="card-body bg-primary")
-                        h3(class="card-title") {{not.titulo}}
-                        p(class="card-text") {{not.mensaje}}
-                        p(class="card-text") {{not.hora}}
+
 script. 
     function pulsar(e) { 
       tecla = (document.all) ? e.keyCode :e.which; 

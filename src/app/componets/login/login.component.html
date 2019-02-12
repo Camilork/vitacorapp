@@ -1,12 +1,12 @@
 
 <form #loginform="ngForm" *ngIf="!sing"> 
   <table class="table" id="tblogin">
-    <thead class="bg-info text-white">
+    <thead class="text-white">
       <tr>
         <th>Log in</th>
       </tr>
     </thead>
-    <tbody class="bg-light">  
+    <tbody class="text-white">  
       <tr>
         <td> 
           <input type="text" name="username" placeholder="Username" #username="ngModel" [(ngModel)]="loginService.logina.username"/>
@@ -19,13 +19,13 @@
       </tr>
       <tr>
         <td>
-          <input class="btn bg-success text-white" id="btnlog" type="button" value="Sing up" (click)="singup()"/>
-          <input class="btn bg-success text-white" id="btnlog" type="button" value="Log in" (click)="logperson(loginform)"/>
+          <input class="btn text-white" id="btnlog" type="button" value="Sing up" (click)="singup()"/>
+          <input class="btn text-white" id="btnlog" type="button" value="Log in" (click)="logperson(loginform)"/>
         </td>
       </tr>
     </tbody>
   </table>
 </form>
-<div *ngIf="sing" style="width:90%;margin-left: auto;margin-right: auto;">                   
+<div *ngIf="sing" style="width:50%;margin-left: auto;margin-right: auto;">                   
   <app-usercreator (getUser)="this.singup()" [singup]="sing">             </app-usercreator>
 </div>

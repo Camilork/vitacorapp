@@ -20,11 +20,11 @@ $input-width: 70%;
         width: $table-desktop-width;  
 #tblogin
     width: $table-desktop-width;
+    background: rgba(255, 255, 255, 0.1);
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background: white;
     border-style: none !important;
     font-size: $table-content-fontsize;
     th
@@ -34,7 +34,8 @@ $input-width: 70%;
         border-top: none;    
     @include table-response;   
 input 
-    background: #F8F9FB;
+    color: white !important;
+    background: rgba(255, 255, 255, 0);
     width: $input-width ; 
     font-size: $table-content-fontsize;
     @include drop-borders;
@@ -44,4 +45,4 @@ input
     margin-right: auto;
     font-size: large;   
     border-radius: 0% ; 
-   
+    background: rgba(255, 255, 255, 0);

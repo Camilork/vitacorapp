@@ -6,8 +6,9 @@ constructor(server = 'http://localhost:3000'){
   }
   server : string;
 }*/
+
 constructor(server = 'https://vitacorapp.herokuapp.com'){
     this.server = server;
     }
     server : string;
-    }
+}

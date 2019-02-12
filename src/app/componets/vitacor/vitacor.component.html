@@ -1,100 +1,110 @@
 
 <div class="container-fluid text-center">   
   <div class="row content">
-    <div class="col-sm-8 sidenav">
-      <form #vitaform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">
-        <table class="table table-sm table-light" id="formtable">
-          <tbody></tbody>
-          <tr>
-            <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="vitacorService.selectvitacor._id"/>
-            <th scope="col">Id Task:
+    <div class="col-sm-6 sidenav">
+      <form #vitaform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">  
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title" id="editTitle">Create Day</h2>
+            <p class="card-text"> 
+              <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="vitacorService.selectvitacor._id"/>
               <input type="text" name="idTasks" placeholder="idTasks" #idTasks="ngModel" [(ngModel)]="vitacorService.selectvitacor.idTasks"/>
-            </th>
-          </tr>
-          <tr>
-            <th scope="col">Init Date:
-              <input type="text" name="initDate" placeholder="Init date" #initDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.initDate"/>
-            </th>
-            <th scope="col">Finish Date:
-              <input type="text" name="finishDate" placeholder="Finish date" #finishDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.finishDate"/>
-            </th>
-          </tr>
-          <tr>
-            <th scope="col">Notes:
-              <input type="text" name="note" placeholder="Notes" #note="ngModel" [(ngModel)]="vitacorService.selectvitacor.note"/>
-            </th>
-            <th scope="col">Lid:
               <input type="text" name="lid" placeholder="Lid" #lid="ngModel" [(ngModel)]="vitacorService.selectvitacor.lid"/>
-            </th>
-          </tr>
-          <tr>
-            <th></th>
-            <th scope="col">
-              <input type="button" value="Send" (click)="createVita(vitaform)"/>
-            </th>
-          </tr>
-        </table>
+            </p>
+            <p class="card-text"> 
+              <input type="text" name="initDate" placeholder="Init date" #initDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.initDate"/>
+              <input type="text" name="finishDate" placeholder="Finish date" #finishDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.finishDate"/>
+            </p>
+            <p class="card-text"> 
+              <input type="text" name="note" placeholder="Notes" #note="ngModel" [(ngModel)]="vitacorService.selectvitacor.note"/>
+              <input type="button" id="button" value="Clear" (click)="resetForm(vitaform)"/>
+              <input type="button" id="button" value="Send" (click)="createVita(vitaform)"/>
+            </p>
+          </div>
+        </div>
       </form>
-      <table class="table table-sm table-light" id="formtable">
-        <thead></thead>
-        <tr>
-          <th scope="col">Tarea</th>
-          <th scope="col">Status</th>
-          <th scope="col">Finish date</th>
-          <th scope="col">Tasks</th>
-          <th scope="col">Pending task</th>
-          <th scope="col">Notes</th>
-          <th scope="col">Lid</th>
-          <th scope="col">Actions</th>
-        </tr>
-        <tbody></tbody>
-        <tr *ngFor="let vita of vitacorService.vita index as i">
-          <th scope="row">{{vita.idTasks}}</th>
-          <td>{{vita.initDate}}</td>
-          <td>{{vita.finishDate}}</td>
-          <td>{{vita.taskCant}}</td>
-          <td>{{vita.taskFinished}}  <a (click)="getTaskCount(vita.idTasks,i)"><i class="glyphicon glyphicon-pencil"></i></a></td>
-          <td>{{vita.note}}</td>
-          <td>{{vita.lid}}</td>
-          <td><a (click)="editVita(vita)"><i class="glyphicon glyphicon-pencil"></i></a><a (click)="deleteVita(vita._id)"><i class="glyphicon glyphicon-trash"> </i></a></td>
-        </tr>
-      </table>
+      <div class="card" id="cardData"><a (click)="listViewer()"><i class="glyphicon glyphicon-list btnlist" *ngIf="!viewList"></i><i class="glyphicon glyphicon-th-large btnlist" *ngIf="viewList"></i></a>
+        <div class="card-body" *ngIf="!viewList">
+          <div class="card-columns"></div>
+          <div class="container-fluid text-center">   
+            <div class="row content">
+              <div class="card 50" *ngFor="let vita of vitacorService.vita index as i">
+                <h4 class="card-title">{{vita.initDate}} -> {{vita.finishDate}}</h4>
+                <div class="card-body">
+                  <p class="card-text">   
+                    <label scope="col">{{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending  </label>
+                  </p>
+                  <p class="card-text"> 
+                    <label scope="col">Lid : {{vita.lid}}</label>
+                  </p>
+                  <p class="card-text"> 
+                    <label scope="col">Note: {{vita.note}}</label>
+                    <label>Id: {{vita.idTasks}}<a (click)="deleteVita(vita._id)"><i class="glyphicon glyphicon-trash"> </i></a><a (click)="getTaskCount(vita.idTasks,i);editVita(vita)"><i class="glyphicon glyphicon-edit"> </i></a></label>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" *ngIf="viewList">
+          <table class="table table-condensed ">
+            <tbody *ngFor="let vita of vitacorService.vita index as i">
+              <tr>
+                <td> 
+                  <label>{{vita.initDate}} -> {{vita.finishDate}}</label>
+                </td>
+                <td> 
+                  <label>{{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending </label>
+                </td>
+                <td><a (click)="getTaskCount(vita.idTasks,i);editVita(vita)"><i class="glyphicon glyphicon-edit"></i></a><a (click)="deleteVita(vita._id)"><i class="glyphicon glyphicon-trash">                                                                     </i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-4 text-left"> 
+    <div class="col-sm-6 text-left"> 
       <form #taskform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">
-        <table class="table table-sm table-light" id="tbltask">
+        <table class="table table-sm " id="tbltask">
           <tbody></tbody>
           <tr id="formtr">
             <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="taskService.selecttask._id"/>
             <input class="form-control" type="hidden" name="idTasks" id="idTasks" value="1" #idTasks="ngModel" [(ngModel)]="taskService.selecttask.idTasks"/>
             <td>
-              <input type="text" name="task" placeholder="Task" #tasks="ngModel" [(ngModel)]="taskService.selecttask.task"/>
+              <div class="group">
+                <input class="imp" type="text" required="required" name="task" #tasks="ngModel" [(ngModel)]="taskService.selecttask.task"/><span class="highlight"></span><span class="bar"></span>
+                <label class="lbl">Email</label>
+              </div>
             </td>
             <td>   
               <input class="form-control" type="hidden" name="status" id="status" value="pendding" #status="ngModel" [(ngModel)]="taskService.selecttask.status"/>
             </td>
             <td>
-              <input type="button" name="send" placeholder="Send" value="Send" (click)="createTask(taskform)"/>
+              <input type="button" id="button" name="send" placeholder="Send" value="Send" (click)="createTask(taskform)"/>
             </td>
           </tr>
         </table>
       </form>
-      <table class="table table-sm table-light" id="tbltask">
+      <table class="table table-sm " id="tbltask">
         <thead></thead>
         <tr>
-          <th scope="col">Tarea</th>
+          <th scope="col">Task</th>
           <th scope="col">Status</th>
           <th scope="col">Actions</th>
         </tr>
-        <tbody></tbody>
-        <tr *ngFor="let task of taskService.task">
-          <td>{{task.task}}</td>
-          <td> 
-            <div class="flipswitch" [ngClass]="task.status">{{task.status}} .<a (click)="editTask(task)"><i class="glyphicon glyphicon-edit" (click)="changeTaskStatus(task,task.status)"> </i></a></div>
-          </td>
-          <td><a (click)="editTask(task)"><i class="glyphicon glyphicon-pencil"></i></a><a (click)="deleteTask(task._id)"><i class="glyphicon glyphicon-trash"> </i></a></td>
-        </tr>
       </table>
+      <div class="taskdiv">
+        <table class="table table-sm " id="tbltask">     
+          <tbody></tbody>
+          <tr *ngFor="let task of taskService.task">
+            <td>{{task.task}}</td>
+            <td> 
+              <div class="flipswitch" [ngClass]="task.status">{{task.status}} .<a (click)="editTask(task)"><i class="glyphicon glyphicon-off" (click)="changeTaskStatus(task,task.status)"> </i></a></div>
+            </td>
+            <td><a (click)="editTask(task)"><i class="glyphicon glyphicon-pencil"></i></a><a (click)="deleteTask(task._id)"><i class="glyphicon glyphicon-trash"> </i></a></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -7,25 +7,34 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 </head>
 <body>
     <div id="content">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header" style="width:100%">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://image4.owler.com/logo/rokk3rlabs_owler_20160227_010535_original.png" alt="" />
-                    </a>
-                    <a class="navbar-brand" style="float:right" (click)="sessionclose()" *ngIf="loger">
-                        <i>Log out</i>
-                    </a>
+        <div id="glassStyle">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header" style="width:100%">
+                        <a class="navbar-brand" href="#">
+                            <img src="https://image4.owler.com/logo/rokk3rlabs_owler_20160227_010535_original.png" alt="" />
+                        </a>
+                        <a class="navbar-brand" style="float:right" (click)="sessionclose()" *ngIf="loger">
+                            <i>Log out</i>
+                        </a>
+                    </div>
                 </div>
+            </nav>
+            <div id="latPanel" class="col-sm-1 text-left hidden-xs" *ngIf="loger"> 
+                <a (click)="menurouter('user')" id="menuitem"><i class="glyphicon glyphicon-user" ></i></a>
+                <br><br>
+                <a (click)="menurouter('vitacor')" id="menuitem"><i class="glyphicon glyphicon-tasks"></i></a>
             </div>
-        </nav>
-        <div id="data" class="bg-light"> 
-            <router-outlet></router-outlet>
+            <div id="data"> 
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
+    
 </body>
 
 </html>

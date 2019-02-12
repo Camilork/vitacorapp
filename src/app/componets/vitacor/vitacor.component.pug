@@ -1,93 +1,98 @@
 div(class="container-fluid text-center")    
     div(class="row content")
-        div(class="col-sm-8 sidenav")
-            form(#vitaform="ngForm",appnoautocomplete="", autocomplete="off",  (keydown.enter)="$event.preventDefault()")
-                table(class="table table-sm table-light" id='formtable')
-                    tbody
-                    tr()
-                        input(
-                            type="hidden", 
-                            name="_id", 
-                            class="form-control", 
-                            id="_id",
-                            #_id="ngModel",
-                            [(ngModel)]="vitacorService.selectvitacor._id"
-                        )
-                        th(scope="col") Id Task:
-                            input(type="text", 
-                            name="idTasks", 
-                            placeholder="idTasks",
-                            #idTasks="ngModel",
-                            [(ngModel)]="vitacorService.selectvitacor.idTasks"
-                            )
-                    tr
-                        th(scope="col") Init Date:
-                            input(type="text", 
-                            name="initDate", 
-                            placeholder="Init date",
-                            #initDate="ngModel",
-                            [(ngModel)]="vitacorService.selectvitacor.initDate"
-                            )
-                        th(scope="col") Finish Date:
-                            input(type="text", 
-                            name="finishDate", 
-                            placeholder="Finish date",
-                            #finishDate="ngModel",
-                            [(ngModel)]="vitacorService.selectvitacor.finishDate")
-                    tr
-                        th(scope="col") Notes:
-                            input(type="text", 
-                            name="note", 
-                            placeholder="Notes"
-                            #note="ngModel",
-                            [(ngModel)]="vitacorService.selectvitacor.note" )
-                        th(scope="col") Lid:
-                            input(type="text", 
-                            name="lid", 
-                            placeholder="Lid"
-                            #lid="ngModel",
-                            [(ngModel)]="vitacorService.selectvitacor.lid" )
-                    tr
-                        th
-                        th(scope="col")
-                            input(type="button", 
-                            value="Send",
-                            (click)="createVita(vitaform)")
-            table(class="table table-sm table-light" id='formtable')
-                    thead
-                    tr
-                        th(scope="col") Tarea
-                        th(scope="col") Status
-                        th(scope="col") Finish date
-                        th(scope="col") Tasks
-                        th(scope="col") Pending task
-                        th(scope="col") Notes
-                        th(scope="col") Lid
-                        th(scope="col") Actions
-                    tbody
-                    tr(*ngFor="let vita of vitacorService.vita index as i")
-                        th(scope="row") {{vita.idTasks}}
-                        td {{vita.initDate}}
-                        td {{vita.finishDate}}
-                        td {{vita.taskCant}}
-                        td {{vita.taskFinished}}  
-                            a("(click)"="getTaskCount(vita.idTasks,i)")
-                                i(class="glyphicon glyphicon-pencil")
-                        td {{vita.note}}
-                        td {{vita.lid}}
-                        td
-                            a("(click)"="editVita(vita)")
-                                i(class="glyphicon glyphicon-pencil")
-                            a((click)="deleteVita(vita._id)")
-                                i(class="glyphicon glyphicon-trash") 
-    
-        div(class="col-sm-4 text-left") 
+        div(class="col-sm-6 sidenav")
+            form(#vitaform="ngForm",appnoautocomplete="", autocomplete="off",  (keydown.enter)="$event.preventDefault()")   
+                div(class="card")
+                    div(class="card-body")
+                            h2(class="card-title" id="editTitle") Create Day
+                            p(class="card-text") 
+                                input(
+                                    type="hidden", 
+                                    name="_id", 
+                                    class="form-control", 
+                                    id="_id",
+                                    #_id="ngModel",
+                                    [(ngModel)]="vitacorService.selectvitacor._id"
+                                )
+                                input(type="text", 
+                                    name="idTasks", 
+                                    placeholder="idTasks",
+                                    #idTasks="ngModel",
+                                    [(ngModel)]="vitacorService.selectvitacor.idTasks"
+                                    )    
+                                input(type="text", 
+                                    name="lid", 
+                                    placeholder="Lid"
+                                    #lid="ngModel",
+                                    [(ngModel)]="vitacorService.selectvitacor.lid" ) 
+                            p(class="card-text") 
+                                input(type="text", 
+                                    name="initDate", 
+                                    placeholder="Init date",
+                                    #initDate="ngModel",
+                                    [(ngModel)]="vitacorService.selectvitacor.initDate"
+                                    )
+                                input(type="text", 
+                                    name="finishDate", 
+                                    placeholder="Finish date",
+                                    #finishDate="ngModel",
+                                    [(ngModel)]="vitacorService.selectvitacor.finishDate")
+                            p(class="card-text") 
+                                input(type="text", 
+                                    name="note", 
+                                    placeholder="Notes"
+                                    #note="ngModel",
+                                    [(ngModel)]="vitacorService.selectvitacor.note" )    
+                                input(type="button", 
+                                    id="button"
+                                    value="Clear",
+                                    (click)="resetForm(vitaform)")  
+                                input(type="button", 
+                                    id="button"
+                                    value="Send",
+                                    (click)="createVita(vitaform)")  
+            div(class="card" id="cardData")
+                a("(click)"="listViewer()")
+                    i(class="glyphicon glyphicon-list btnlist", *ngIf="!viewList")
+                    i(class="glyphicon glyphicon-th-large btnlist", *ngIf="viewList")
+                div(class="card-body", *ngIf="!viewList")
+                    div(class="card-columns")
+                    div(class="container-fluid text-center")    
+                        div(class="row content")
+                                div(class="card 50" ,*ngFor="let vita of vitacorService.vita index as i")
+                                        h4(class="card-title") {{vita.initDate}} -> {{vita.finishDate}}
+                                        div(class="card-body")
+                                            p(class="card-text")    
+                                                label(scope="col") {{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending  
+                                            p(class="card-text")  
+                                                label(scope="col") Lid : {{vita.lid}}
+                                            p(class="card-text") 
+                                                label(scope="col") Note: {{vita.note}}
+                                                label Id: {{vita.idTasks}}
+                                                    a((click)="deleteVita(vita._id)")
+                                                        i(class="glyphicon glyphicon-trash") 
+                                                    a("(click)"="getTaskCount(vita.idTasks,i);editVita(vita)")
+                                                        i(class="glyphicon glyphicon-edit") 
+                div(class="card-body", *ngIf="viewList")
+                    table(class="table table-condensed ")
+                        tbody(*ngFor="let vita of vitacorService.vita index as i")
+                            tr
+                                td 
+                                    label {{vita.initDate}} -> {{vita.finishDate}}
+                                td  
+                                    label {{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending 
+                                td
+                                    a("(click)"="getTaskCount(vita.idTasks,i);editVita(vita)")
+                                        i(class="glyphicon glyphicon-edit")
+                                    a((click)="deleteVita(vita._id)")
+                                        i(class="glyphicon glyphicon-trash")                                                                      
+        div(class="col-sm-6 text-left") 
             form(#taskform="ngForm",
                 appnoautocomplete="", 
                 autocomplete="off",  
                 (keydown.enter)="$event.preventDefault()"
                 )
-                table(class="table table-sm table-light" id="tbltask")
+                table(class="table table-sm " id="tbltask")
                     tbody
                     tr(id="formtr")
                         input(
@@ -108,12 +113,16 @@ div(class="container-fluid text-center")
                             [(ngModel)]="taskService.selecttask.idTasks"
                         )
                         td
-                            input(type="text", 
-                            name="task", 
-                            placeholder="Task",
-                            #tasks="ngModel",
-                            [(ngModel)]="taskService.selecttask.task"
-                            )
+                            div(class="group")
+                                input(type="text", 
+                                required class="imp"
+                                name="task", 
+                                #tasks="ngModel",
+                                [(ngModel)]="taskService.selecttask.task"
+                                )
+                                span(class="highlight")
+                                span(class="bar")
+                                label(class="lbl") Email
                         td    
                             input(
                                 type="hidden", 
@@ -126,29 +135,32 @@ div(class="container-fluid text-center")
                             )
                         td
                             input(type="button", 
+                            id="button",
                             name="send", 
                             placeholder="Send",
                             value="Send",
                             (click)="createTask(taskform)"
-                            )
-            table(class="table table-sm table-light" id="tbltask")
+                            )    
+            table(class="table table-sm " id="tbltask")
                 thead
                 tr
-                    th(scope="col") Tarea
+                    th(scope="col") Task
                     th(scope="col") Status
                     th(scope="col") Actions
-                tbody
-                tr(*ngFor="let task of taskService.task" )
-                    td {{task.task}}
-                    td 
-                        div(class="flipswitch",[ngClass]="task.status") {{task.status}} .
+            div(class="taskdiv")
+                table(class="table table-sm " id="tbltask")      
+                    tbody
+                    tr(*ngFor="let task of taskService.task" )
+                        td {{task.task}}
+                        td 
+                            div(class="flipswitch",[ngClass]="task.status") {{task.status}} .
+                                a("(click)"="editTask(task)")
+                                    i(class="glyphicon glyphicon-off",(click)="changeTaskStatus(task,task.status)") 
+                        td
                             a("(click)"="editTask(task)")
-                                i(class="glyphicon glyphicon-edit",(click)="changeTaskStatus(task,task.status)") 
-                    td
-                        a("(click)"="editTask(task)")
-                            i(class="glyphicon glyphicon-pencil")
-                        a((click)="deleteTask(task._id)")
-                            i(class="glyphicon glyphicon-trash") 
+                                i(class="glyphicon glyphicon-pencil")
+                            a((click)="deleteTask(task._id)")
+                                i(class="glyphicon glyphicon-trash") 
 
 
 

@@ -1,9 +1,9 @@
 form('#loginform'="ngForm",*ngIf='!sing') 
     table(id="tblogin" class='table')
-        thead(class="bg-info text-white")
+        thead(class="text-white")
             tr
                 th Log in
-        tbody(class='bg-light')   
+        tbody(class='text-white')   
             tr
                 td 
                     input(
@@ -27,16 +27,16 @@ form('#loginform'="ngForm",*ngIf='!sing')
                     input(
                         id= "btnlog"
                         type="button", 
-                        class="btn bg-success text-white", 
+                        class="btn text-white", 
                         value="Sing up", 
                         (click)="singup()"
                     )    
                     input(
                         id="btnlog"
                         type="button", 
-                        class="btn bg-success text-white", 
+                        class="btn text-white", 
                         value="Log in", 
                         (click)="logperson(loginform)"
                     )
-div(*ngIf='sing' style="width:90%;margin-left: auto;margin-right: auto;")                    
+div(*ngIf='sing' style="width:50%;margin-left: auto;margin-right: auto;")                    
     app-usercreator((getUser)="this.singup()", [singup]='sing')              

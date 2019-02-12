@@ -20,6 +20,14 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.username", 
                             placeholder="Username"
                         )
+                        input(
+                            type="email", 
+                            id="email", 
+                            name="email", 
+                            #email="ngModel", 
+                            [(ngModel)]="personService.selectperson.email",  
+                            placeholder="Email"
+                        )
                     div    
                         input( 
                             type="text", 
@@ -53,24 +61,7 @@ div(class="card-img-top")
                             #second_lastname="ngModel", 
                             [(ngModel)]="personService.selectperson.second_lastname",  
                             placeholder="Second lastname"
-                        )
-                    div
-                        input(
-                            type="email", 
-                            id="email", 
-                            name="email", 
-                            #email="ngModel", 
-                            [(ngModel)]="personService.selectperson.email",  
-                            placeholder="Email"
-                        )
-                        input(
-                            type="text", 
-                            id="country", 
-                            name="country", 
-                            #country="ngModel", 
-                            [(ngModel)]="personService.selectperson.country",  
-                            placeholder="Country"
-                        )    
+                        )  
                     div(*ngIf="passwordInputVisible")
                         input(
                             type="password", 
@@ -88,6 +79,14 @@ div(class="card-img-top")
                         )
                     div
                         input(
+                            type="text", 
+                            id="country", 
+                            name="country", 
+                            #country="ngModel", 
+                            [(ngModel)]="personService.selectperson.country",  
+                            placeholder="Country"
+                        )  
+                        input(
                             type="number", 
                             id="celphone", 
                             name="celphone", 
@@ -95,6 +94,7 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.celphone",  
                             placeholder="Celphone"
                         )
+                    div
                         input(
                             type="number", 
                             id="Rate_by_hour", 
@@ -103,7 +103,6 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.Rate_by_hour",  
                             placeholder="Rate by hour"
                         )    
-                    div    
                         input(
                             type="number", 
                             id="Rate_by_mount", 
@@ -112,6 +111,7 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.Rate_by_mount",  
                             placeholder="Rate by mount"
                         )
+                    div
                         input(
                             type="number", 
                             id="idRol", 
@@ -120,7 +120,6 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.idRol",  
                             placeholder="idRol"
                         )
-                    div    
                         input(
                             type="text", 
                             id="github", 
@@ -129,6 +128,15 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.github",  
                             placeholder="Github"
                         )
+                    div
+                        input(
+                            type="text", 
+                            id="bitbucket", 
+                            name="bitbucket", 
+                            #bitbucket="ngModel", 
+                            [(ngModel)]="personService.selectperson.bitbucket",  
+                            placeholder="Bitbucket"
+                        )     
                         input(
                             type="text", 
                             id="linkedin", 
@@ -137,23 +145,15 @@ div(class="card-img-top")
                             [(ngModel)]="personService.selectperson.linkedin",  
                             placeholder="Linkedin"
                         )
-                    input(
-                        type="text", 
-                        class="form-control",
-                        id="bitbucket", 
-                        name="bitbucket", 
-                        #bitbucket="ngModel", 
-                        [(ngModel)]="personService.selectperson.bitbucket",  
-                        placeholder="Bitbucket"
-                    )        
+                           
                 div(class="form-group")
                     div(id="btndiv")
                         button(
                             *ngIf="singup",
-                            class="btn btn-outline-primary btn-lg", 
+                            class="btn btn-outline-light btn-lg", 
                             "(click)"="returnpage()") Return
                         button(
-                            class="btn btn-outline-primary btn-lg", 
+                            class="btn btn-outline-light btn-lg", 
                             "(click)"="resetForm(personaform)") Clean   
-                        button(class="btn btn-outline-primary btn-lg",
+                        button(class="btn btn-outline-light btn-lg",
                             "(click)"="addperson(personaform)") Save 

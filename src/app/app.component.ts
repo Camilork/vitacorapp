@@ -25,6 +25,9 @@ ngOnInit() {
     }); 
 }
 
+menurouter(dir){
+  this.router.navigateByUrl('/'+dir);
+}
 sessioncheck(){
   if (localStorage.getItem('staffondemandToken') === null){
     this.router.navigateByUrl('');
