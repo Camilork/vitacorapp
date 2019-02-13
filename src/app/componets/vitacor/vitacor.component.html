@@ -6,20 +6,45 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title" id="editTitle">Create Day</h2>
-            <p class="card-text"> 
-              <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="vitacorService.selectvitacor._id"/>
-              <input type="text" name="idTasks" placeholder="idTasks" #idTasks="ngModel" [(ngModel)]="vitacorService.selectvitacor.idTasks"/>
-              <input type="text" name="lid" placeholder="Lid" #lid="ngModel" [(ngModel)]="vitacorService.selectvitacor.lid"/>
-            </p>
-            <p class="card-text"> 
-              <input type="text" name="initDate" placeholder="Init date" #initDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.initDate"/>
-              <input type="text" name="finishDate" placeholder="Finish date" #finishDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.finishDate"/>
-            </p>
-            <p class="card-text"> 
-              <input type="text" name="note" placeholder="Notes" #note="ngModel" [(ngModel)]="vitacorService.selectvitacor.note"/>
-              <input type="button" id="button" value="Clear" (click)="resetForm(vitaform)"/>
-              <input type="button" id="button" value="Send" (click)="createVita(vitaform)"/>
-            </p>
+            <div class="card-text">
+              <div class="row content">
+                <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="vitacorService.selectvitacor._id"/>
+                <div id="labelMaterial"> 
+                  <div class="group">
+                    <input class="imp" type="text" required="required" name="idTasks" #idTasks="ngModel" [(ngModel)]="vitacorService.selectvitacor.idTasks"/>
+                    <label class="lbl">Id Tasks  </label>
+                  </div>
+                </div>
+                <div id="labelMaterial"> 
+                  <div class="group">
+                    <input class="imp" type="text" required="required" name="lid" #lid="ngModel" [(ngModel)]="vitacorService.selectvitacor.lid"/>
+                    <label class="lbl">Lid </label>
+                  </div>
+                </div>
+                <div id="labelMaterial"> 
+                  <div class="group">
+                    <input class="imp" type="date" required="required" name="initDate" #initDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.initDate"/>
+                    <label class="lbldate">Init date</label>
+                  </div>
+                </div>
+                <div id="labelMaterial"> 
+                  <div class="group">
+                    <input class="imp" type="date" required="required" name="finishDate" #finishDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.finishDate"/>
+                    <label class="lbldate">Finish date</label>
+                  </div>
+                </div>
+                <div id="labelMaterial"> 
+                  <div class="group">
+                    <input class="imp" type="text" required="required" name="note" #note="ngModel" [(ngModel)]="vitacorService.selectvitacor.note"/>
+                    <label class="lbl">Notes</label>
+                  </div>
+                </div>
+                <div id="labelMaterial"> 
+                  <input type="button" id="button" value="Clear" (click)="resetForm(vitaform)"/>
+                  <input type="button" id="button" value="Send" (click)="createVita(vitaform)"/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </form>
@@ -71,9 +96,11 @@
             <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="taskService.selecttask._id"/>
             <input class="form-control" type="hidden" name="idTasks" id="idTasks" value="1" #idTasks="ngModel" [(ngModel)]="taskService.selecttask.idTasks"/>
             <td>
-              <div class="group">
-                <input class="imp" type="text" required="required" name="task" #tasks="ngModel" [(ngModel)]="taskService.selecttask.task"/><span class="highlight"></span><span class="bar"></span>
-                <label class="lbl">Email</label>
+              <div id="labelMaterial">
+                <div class="group"> 
+                  <input class="imp" type="text" required="required" name="task" #tasks="ngModel" [(ngModel)]="taskService.selecttask.task"/>
+                  <label class="lbl">Email</label>
+                </div>
               </div>
             </td>
             <td>   

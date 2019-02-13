@@ -5,9 +5,10 @@
 <div class="container-fluid text-center">   
   <div class="row content">
     <div class="col-sm-5 text-left"> 
-      <app-usercreator (getUser)="this.getperson()">      </app-usercreator>
+      <app-usercreator (getUser)="this.getperson()">    </app-usercreator>
     </div>
-    <div class="col-sm-4 sidenav">
+    <div class="col-sm-1 sidenav"></div>
+    <div class="col-sm-5 sidenav">
       <label id="title">Persons</label>
       <div id="getPersonView">
         <div class="card" *ngFor="let person of personService.person">

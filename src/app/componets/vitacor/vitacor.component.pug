@@ -5,52 +5,70 @@ div(class="container-fluid text-center")
                 div(class="card")
                     div(class="card-body")
                             h2(class="card-title" id="editTitle") Create Day
-                            p(class="card-text") 
-                                input(
-                                    type="hidden", 
-                                    name="_id", 
-                                    class="form-control", 
-                                    id="_id",
-                                    #_id="ngModel",
-                                    [(ngModel)]="vitacorService.selectvitacor._id"
-                                )
-                                input(type="text", 
-                                    name="idTasks", 
-                                    placeholder="idTasks",
-                                    #idTasks="ngModel",
-                                    [(ngModel)]="vitacorService.selectvitacor.idTasks"
-                                    )    
-                                input(type="text", 
-                                    name="lid", 
-                                    placeholder="Lid"
-                                    #lid="ngModel",
-                                    [(ngModel)]="vitacorService.selectvitacor.lid" ) 
-                            p(class="card-text") 
-                                input(type="text", 
-                                    name="initDate", 
-                                    placeholder="Init date",
-                                    #initDate="ngModel",
-                                    [(ngModel)]="vitacorService.selectvitacor.initDate"
+                            div(class="card-text")
+                                div(class="row content")
+                                    input(
+                                        type="hidden", 
+                                        name="_id", 
+                                        class="form-control", 
+                                        id="_id",
+                                        #_id="ngModel",
+                                        [(ngModel)]="vitacorService.selectvitacor._id"
                                     )
-                                input(type="text", 
-                                    name="finishDate", 
-                                    placeholder="Finish date",
-                                    #finishDate="ngModel",
-                                    [(ngModel)]="vitacorService.selectvitacor.finishDate")
-                            p(class="card-text") 
-                                input(type="text", 
-                                    name="note", 
-                                    placeholder="Notes"
-                                    #note="ngModel",
-                                    [(ngModel)]="vitacorService.selectvitacor.note" )    
-                                input(type="button", 
-                                    id="button"
-                                    value="Clear",
-                                    (click)="resetForm(vitaform)")  
-                                input(type="button", 
-                                    id="button"
-                                    value="Send",
-                                    (click)="createVita(vitaform)")  
+                                    div(id="labelMaterial") 
+                                            div(class="group")
+                                                input(type="text", 
+                                                    required class="imp",
+                                                    name="idTasks", 
+                                                    #idTasks="ngModel",
+                                                    [(ngModel)]="vitacorService.selectvitacor.idTasks"
+                                                )
+                                                label(class="lbl") Id Tasks  
+                                    div(id="labelMaterial") 
+                                            div(class="group")
+                                                input(type="text", 
+                                                    required class="imp",
+                                                    name="lid", 
+                                                    #lid="ngModel",
+                                                    [(ngModel)]="vitacorService.selectvitacor.lid" 
+                                                )
+                                                label(class="lbl") Lid 
+                                    div(id="labelMaterial") 
+                                            div(class="group")
+                                                input(type="date", 
+                                                    required class="imp",
+                                                    name="initDate", 
+                                                    #initDate="ngModel",
+                                                    [(ngModel)]="vitacorService.selectvitacor.initDate"
+                                                )
+                                                label(class="lbldate") Init date
+                                    div(id="labelMaterial") 
+                                            div(class="group")
+                                                input(type="date", 
+                                                    required class="imp",
+                                                    name="finishDate", 
+                                                    #finishDate="ngModel",
+                                                    [(ngModel)]="vitacorService.selectvitacor.finishDate"
+                                                    )
+                                                label(class="lbldate") Finish date
+                                    div(id="labelMaterial") 
+                                            div(class="group")
+                                                input(type="text", 
+                                                    required class="imp",
+                                                    name="note", 
+                                                    #note="ngModel",
+                                                    [(ngModel)]="vitacorService.selectvitacor.note" 
+                                                    )    
+                                                label(class="lbl") Notes
+                                    div(id="labelMaterial") 
+                                        input(type="button", 
+                                            id="button"
+                                            value="Clear",
+                                            (click)="resetForm(vitaform)")  
+                                        input(type="button", 
+                                            id="button"
+                                            value="Send",
+                                            (click)="createVita(vitaform)")  
             div(class="card" id="cardData")
                 a("(click)"="listViewer()")
                     i(class="glyphicon glyphicon-list btnlist", *ngIf="!viewList")
@@ -113,16 +131,15 @@ div(class="container-fluid text-center")
                             [(ngModel)]="taskService.selecttask.idTasks"
                         )
                         td
-                            div(class="group")
-                                input(type="text", 
-                                required class="imp"
-                                name="task", 
-                                #tasks="ngModel",
-                                [(ngModel)]="taskService.selecttask.task"
-                                )
-                                span(class="highlight")
-                                span(class="bar")
-                                label(class="lbl") Email
+                            div(id="labelMaterial")
+                                div(class="group") 
+                                    input(type="text", 
+                                    required class="imp"
+                                    name="task", 
+                                    #tasks="ngModel",
+                                    [(ngModel)]="taskService.selecttask.task"
+                                    )
+                                    label(class="lbl") Email
                         td    
                             input(
                                 type="hidden", 

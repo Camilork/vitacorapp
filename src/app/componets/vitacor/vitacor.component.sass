@@ -1,13 +1,7 @@
+@import "../styles/label.sass"
 @mixin center()
     margin-left: auto;
     margin-right: auto;
-@mixin inputborder()
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 1px;
-    border-style: solid;
-    background: rgba(0, 0, 0, 0);
 @mixin button()
     width: 15%;
     margin-right: 3%;
@@ -29,15 +23,9 @@
     color : white;
     border-color: white;
     +center()
-    input
-        width: 45%;
-        font-size: large;
-        margin: 2%;
-        float: left;
-        +inputborder()
     #button
         +button()
-        width: 20%;
+        width: 40%;
     @media screen and(max-width: 1300px)
         width: 100%;
 #cardData
@@ -93,85 +81,8 @@ scrollbar
   background-color: darkgrey;
   outline: 1px solid slategrey;
 
-.group 			  
-  position: relative; 
-  margin-bottom: 45px; 
-
-.imp 		
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 300px;
-  border: none;
-  border-bottom: 1px solid #757575;
-
-.imp:focus 	
-    outline: none; 
-
-/* LABEL ======================================= */
-.lbl				 
-  color: #999; 
-  font-size: 18px;
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  left: 5px;
-  top: 25px;
-  transition: 0.2s ease all; 
-  -moz-transition: 0.2s ease all; 
-  -webkit-transition: 0.2s ease all;
 
 
-/* active state */
-.imp:focus ~ .lbl, .imp:valid ~ .lbl		
-  top: -1px;
-  font-size: 14px;
-  color: #5264AE;
 
-
-/* BOTTOM BARS ================================= */
-.bar 
-    position: relative; 
-    display: block; 
-    width: 300px; 
-.bar:before, .bar:after 	
-  content: '';
-  height: 2px; 
-  width: 0;
-  bottom: 1px; 
-  position: absolute;
-  background: #5264AE; 
-  transition: 0.2s ease all; 
-  -moz-transition: 0.2s ease all; 
-  -webkit-transition: 0.2s ease all;
-
-.bar:before 
-  left: 50%;
-
-.bar:after 
-  right: 50%; 
-
-
-/* active state */
-.imp:focus ~ .bar:before, .imp:focus ~ .bar:after 
-  width: 50%;
-
-
-/* HIGHLIGHTER ================================== */
-.highlight 
-  position: absolute;
-  height: 60%; 
-  width: 100px; 
-  top: 25%; 
-  left: 0;
-  pointer-events: none;
-  opacity: 0.5;
-
-
-/* active state */
-.imp:focus ~ .highlight 
-  -webkit-animation: inputHighlighter 0.3s ease;
-  -moz-animation: inputHighlighter 0.3s ease;
-  animation: inputHighlighter 0.3s ease;
 
 

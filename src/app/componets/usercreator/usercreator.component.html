@@ -2,40 +2,107 @@
 <div class="card-img-top"> 
   <form #personaform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">
     <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="personService.selectperson._id"/>
-    <div class="form-group">
-      <label id="title">{{title}}
-        <div class="form-group">
-          <div>
-            <input type="text" name="username" id="username" #username="ngModel" [(ngModel)]="personService.selectperson.username" placeholder="Username"/>
-            <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="personService.selectperson.email" placeholder="Email"/>
-          </div>
-          <div>   
-            <input type="text" id="first_name" name="first_name" #first_name="ngModel" [(ngModel)]="personService.selectperson.first_name" placeholder="First name"/>
-            <input type="text" id="second_name" name="second_name" #second_name="ngModel" [(ngModel)]="personService.selectperson.second_name" placeholder="Second name"/>
-          </div>
-          <div>
-            <input type="text" id="first_lastname" name="first_lastname" #first_lastname="ngModel" [(ngModel)]="personService.selectperson.first_lastname" placeholder="First lastname"/>
-            <input type="text" id="second_lastname" name="second_lastname" #second_lastname="ngModel" [(ngModel)]="personService.selectperson.second_lastname" placeholder="Second lastname"/>
-          </div>
-          <div *ngIf="passwordInputVisible">
-            <input type="password" id="password" name="password" #password="ngModel" [(ngModel)]="personService.selectperson.password" placeholder="Password"/>
-            <input type="password" id="repassword" name="repassword" placeholder="Repit the password"/>
-          </div>
-          <div>
-            <input type="text" id="country" name="country" #country="ngModel" [(ngModel)]="personService.selectperson.country" placeholder="Country"/>
-            <input type="number" id="celphone" name="celphone" #celphone="ngModel" [(ngModel)]="personService.selectperson.celphone" placeholder="Celphone"/>
-          </div>
-          <div>
-            <input type="number" id="Rate_by_hour" name="Rate_by_hour" #Rate_by_hour="ngModel" [(ngModel)]="personService.selectperson.Rate_by_hour" placeholder="Rate by hour"/>
-            <input type="number" id="Rate_by_mount" name="Rate_by_mount" #Rate_by_mount="ngModel" [(ngModel)]="personService.selectperson.Rate_by_mount" placeholder="Rate by mount"/>
-          </div>
-          <div>
-            <input type="number" id="idRol" name="idRol" #idRol="ngModel" [(ngModel)]="personService.selectperson.idRol" placeholder="idRol"/>
-            <input type="text" id="github" name="github" #github="ngModel" [(ngModel)]="personService.selectperson.github" placeholder="Github"/>
-          </div>
-          <div>
-            <input type="text" id="bitbucket" name="bitbucket" #bitbucket="ngModel" [(ngModel)]="personService.selectperson.bitbucket" placeholder="Bitbucket"/>
-            <input type="text" id="linkedin" name="linkedin" #linkedin="ngModel" [(ngModel)]="personService.selectperson.linkedin" placeholder="Linkedin"/>
+    <label id="title">{{title}}</label>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-text">
+          <div class="row content">
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" name="username" id="username" #username="ngModel" [(ngModel)]="personService.selectperson.username"/>
+                <label class="lbl">Username </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="email" required="required" id="email" name="email" #email="ngModel" [(ngModel)]="personService.selectperson.email"/>
+                <label class="lbl">Email  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="first_name" name="first_name" #first_name="ngModel" [(ngModel)]="personService.selectperson.first_name"/>
+                <label class="lbl">First name  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="second_name" name="second_name" #second_name="ngModel" [(ngModel)]="personService.selectperson.second_name"/>
+                <label class="lbl">Second name  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="first_lastname" name="first_lastname" #first_lastname="ngModel" [(ngModel)]="personService.selectperson.first_lastname"/>
+                <label class="lbl">First lastname  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="second_lastname" name="second_lastname" #second_lastname="ngModel" [(ngModel)]="personService.selectperson.second_lastname"/>
+                <label class="lbl">Second lastname  </label>
+              </div>
+            </div>
+            <div id="labelMaterial" *ngIf="passwordInputVisible"> 
+              <div class="group">
+                <input class="imp" type="password" required="required" id="password" name="password" #password="ngModel" [(ngModel)]="personService.selectperson.password"/>
+                <label class="lbl">Password  </label>
+              </div>
+            </div>
+            <div id="labelMaterial" *ngIf="passwordInputVisible"> 
+              <div class="group">
+                <input class="imp" type="password" required="required" id="repassword" name="repassword"/>
+                <label class="lbl">Repit password  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="country" name="country" #country="ngModel" [(ngModel)]="personService.selectperson.country"/>
+                <label class="lbl">Country  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="tel" required="required" id="celphone" name="celphone" #celphone="ngModel" [(ngModel)]="personService.selectperson.celphone"/>
+                <label class="lbl">Celphone  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="number" required="required" id="Rate_by_hour" name="Rate_by_hour" #Rate_by_hour="ngModel" [(ngModel)]="personService.selectperson.Rate_by_hour"/>
+                <label class="lbl">Rate by hour  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="number" required="required" id="Rate_by_mount" name="Rate_by_mount" #Rate_by_mount="ngModel" [(ngModel)]="personService.selectperson.Rate_by_mount"/>
+                <label class="lbl">Rate by mount  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="number" required="required" id="idRol" name="idRol" #idRol="ngModel" [(ngModel)]="personService.selectperson.idRol"/>
+                <label class="lbl">Id rol  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="github" name="github" #github="ngModel" [(ngModel)]="personService.selectperson.github"/>
+                <label class="lbl">Github  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="bitbucket" name="bitbucket" #bitbucket="ngModel" [(ngModel)]="personService.selectperson.bitbucket"/>
+                <label class="lbl">Bitbucket  </label>
+              </div>
+            </div>
+            <div id="labelMaterial"> 
+              <div class="group">
+                <input class="imp" type="text" required="required" id="linkedin" name="linkedin" #linkedin="ngModel" [(ngModel)]="personService.selectperson.linkedin"/>
+                <label class="lbl">Linkedin  </label>
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -45,7 +112,7 @@
             <button class="btn btn-outline-light btn-lg" (click)="addperson(personaform)">Save </button>
           </div>
         </div>
-      </label>
+      </div>
     </div>
   </form>
 </div>

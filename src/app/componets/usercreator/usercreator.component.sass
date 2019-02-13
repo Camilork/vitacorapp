@@ -1,28 +1,18 @@
+@import "../styles/label.sass"
 @mixin center()
     margin-left: auto;
     margin-right: auto;    
-@mixin inputborder()
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 1px;
-    border-style: solid;
-    background: rgba(0, 0, 0, 0);
-.form-group
+.card
+    margin-top: -5px;
     font-size: xx-large;
     text-align: center;
     background: rgba(0, 0, 0, 0.3);
     +center()
     input
-        width: 45%;
         color: white;
-        font-size: medium;
-        margin-bottom: 1%;
-        margin-top: 1%;
-        +inputborder()
-        +center()
 #title
     color: white;
+    text-align: center;
     width: 100%;
     font-size: xx-large;
     background: rgba(0, 0, 0, 0.5);

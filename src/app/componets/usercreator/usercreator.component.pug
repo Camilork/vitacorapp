@@ -8,144 +8,185 @@ div(class="card-img-top")
             #_id="ngModel", 
             [(ngModel)]="personService.selectperson._id"
         )
-        div(class="form-group")
-            label(id='title') {{title}}
-                div(class="form-group")
-                    div
-                        input( 
-                            type="text",
-                            name="username", 
-                            id="username",
-                            #username="ngModel", 
-                            [(ngModel)]="personService.selectperson.username", 
-                            placeholder="Username"
-                        )
-                        input(
-                            type="email", 
-                            id="email", 
-                            name="email", 
-                            #email="ngModel", 
-                            [(ngModel)]="personService.selectperson.email",  
-                            placeholder="Email"
-                        )
-                    div    
-                        input( 
-                            type="text", 
-                            id="first_name", 
-                            name="first_name", 
-                            #first_name="ngModel", 
-                            [(ngModel)]="personService.selectperson.first_name", 
-                            placeholder="First name"
-                        )   
-                        input(
-                            type="text", 
-                            id="second_name", 
-                            name="second_name", 
-                            #second_name="ngModel", 
-                            [(ngModel)]="personService.selectperson.second_name",  
-                            placeholder="Second name"
-                        )
-                    div
-                        input(
-                            type="text", 
-                            id="first_lastname", 
-                            name="first_lastname", 
-                            #first_lastname="ngModel", 
-                            [(ngModel)]="personService.selectperson.first_lastname",  
-                            placeholder="First lastname"
-                        )
-                        input(
-                            type="text", 
-                            id="second_lastname", 
-                            name="second_lastname", 
-                            #second_lastname="ngModel", 
-                            [(ngModel)]="personService.selectperson.second_lastname",  
-                            placeholder="Second lastname"
-                        )  
-                    div(*ngIf="passwordInputVisible")
-                        input(
-                            type="password", 
-                            id="password", 
-                            name="password", 
-                            #password="ngModel", 
-                            [(ngModel)]="personService.selectperson.password",  
-                            placeholder="Password"
-                        )
-                        input(
-                            type="password", 
-                            id="repassword", 
-                            name="repassword",   
-                            placeholder="Repit the password"
-                        )
-                    div
-                        input(
-                            type="text", 
-                            id="country", 
-                            name="country", 
-                            #country="ngModel", 
-                            [(ngModel)]="personService.selectperson.country",  
-                            placeholder="Country"
-                        )  
-                        input(
-                            type="number", 
-                            id="celphone", 
-                            name="celphone", 
-                            #celphone="ngModel", 
-                            [(ngModel)]="personService.selectperson.celphone",  
-                            placeholder="Celphone"
-                        )
-                    div
-                        input(
-                            type="number", 
-                            id="Rate_by_hour", 
-                            name="Rate_by_hour", 
-                            #Rate_by_hour="ngModel", 
-                            [(ngModel)]="personService.selectperson.Rate_by_hour",  
-                            placeholder="Rate by hour"
-                        )    
-                        input(
-                            type="number", 
-                            id="Rate_by_mount", 
-                            name="Rate_by_mount", 
-                            #Rate_by_mount="ngModel", 
-                            [(ngModel)]="personService.selectperson.Rate_by_mount",  
-                            placeholder="Rate by mount"
-                        )
-                    div
-                        input(
-                            type="number", 
-                            id="idRol", 
-                            name="idRol", 
-                            #idRol="ngModel", 
-                            [(ngModel)]="personService.selectperson.idRol",  
-                            placeholder="idRol"
-                        )
-                        input(
-                            type="text", 
-                            id="github", 
-                            name="github", 
-                            #github="ngModel", 
-                            [(ngModel)]="personService.selectperson.github",  
-                            placeholder="Github"
-                        )
-                    div
-                        input(
-                            type="text", 
-                            id="bitbucket", 
-                            name="bitbucket", 
-                            #bitbucket="ngModel", 
-                            [(ngModel)]="personService.selectperson.bitbucket",  
-                            placeholder="Bitbucket"
-                        )     
-                        input(
-                            type="text", 
-                            id="linkedin", 
-                            name="linkedin", 
-                            #linkedin="ngModel", 
-                            [(ngModel)]="personService.selectperson.linkedin",  
-                            placeholder="Linkedin"
-                        )
-                           
+        label(id='title') {{title}}
+        div(class="card")
+            div(class="card-body")
+                div(class="card-text")
+                    div(class="row content")
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input( 
+                                type="text",
+                                required class="imp",
+                                name="username", 
+                                id="username",
+                                #username="ngModel", 
+                                [(ngModel)]="personService.selectperson.username"
+                                )
+                                label(class="lbl") Username 
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="email",
+                                required class="imp", 
+                                id="email", 
+                                name="email", 
+                                #email="ngModel", 
+                                [(ngModel)]="personService.selectperson.email"
+                                )
+                                label(class="lbl") Email  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input( 
+                                type="text",
+                                required class="imp", 
+                                id="first_name", 
+                                name="first_name", 
+                                #first_name="ngModel", 
+                                [(ngModel)]="personService.selectperson.first_name"
+                                )   
+                                label(class="lbl") First name  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="second_name", 
+                                name="second_name", 
+                                #second_name="ngModel", 
+                                [(ngModel)]="personService.selectperson.second_name"
+                                )
+                                label(class="lbl") Second name  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="first_lastname", 
+                                name="first_lastname", 
+                                #first_lastname="ngModel", 
+                                [(ngModel)]="personService.selectperson.first_lastname"
+                                )
+                                label(class="lbl") First lastname  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="second_lastname", 
+                                name="second_lastname", 
+                                #second_lastname="ngModel", 
+                                [(ngModel)]="personService.selectperson.second_lastname"
+                                )  
+                                label(class="lbl") Second lastname  
+                        div(id="labelMaterial", *ngIf="passwordInputVisible") 
+                            div(class="group")
+                                input(
+                                type="password",
+                                required class="imp", 
+                                id="password", 
+                                name="password", 
+                                #password="ngModel", 
+                                [(ngModel)]="personService.selectperson.password"
+                                )
+                                label(class="lbl") Password  
+                        div(id="labelMaterial", *ngIf="passwordInputVisible") 
+                            div(class="group")
+                                input(
+                                type="password",
+                                required class="imp", 
+                                id="repassword", 
+                                name="repassword"
+                                )
+                                label(class="lbl") Repit password  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="country", 
+                                name="country", 
+                                #country="ngModel", 
+                                [(ngModel)]="personService.selectperson.country"
+                                )  
+                                label(class="lbl") Country  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="tel",
+                                required class="imp", 
+                                id="celphone", 
+                                name="celphone", 
+                                #celphone="ngModel", 
+                                [(ngModel)]="personService.selectperson.celphone"
+                                )
+                                label(class="lbl") Celphone  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="number",
+                                required class="imp", 
+                                id="Rate_by_hour", 
+                                name="Rate_by_hour", 
+                                #Rate_by_hour="ngModel", 
+                                [(ngModel)]="personService.selectperson.Rate_by_hour"
+                                )   
+                                label(class="lbl") Rate by hour  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="number",
+                                required class="imp", 
+                                id="Rate_by_mount", 
+                                name="Rate_by_mount", 
+                                #Rate_by_mount="ngModel", 
+                                [(ngModel)]="personService.selectperson.Rate_by_mount"
+                                )
+                                label(class="lbl") Rate by mount  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="number",
+                                required class="imp", 
+                                id="idRol", 
+                                name="idRol", 
+                                #idRol="ngModel", 
+                                [(ngModel)]="personService.selectperson.idRol"
+                                )
+                                label(class="lbl") Id rol  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="github", 
+                                name="github", 
+                                #github="ngModel", 
+                                [(ngModel)]="personService.selectperson.github"
+                                )   
+                                label(class="lbl") Github  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="bitbucket", 
+                                name="bitbucket", 
+                                #bitbucket="ngModel", 
+                                [(ngModel)]="personService.selectperson.bitbucket"
+                                )   
+                                label(class="lbl") Bitbucket  
+                        div(id="labelMaterial") 
+                            div(class="group")
+                                input(
+                                type="text",
+                                required class="imp", 
+                                id="linkedin", 
+                                name="linkedin", 
+                                #linkedin="ngModel", 
+                                [(ngModel)]="personService.selectperson.linkedin"
+                                )
+                                label(class="lbl") Linkedin  
                 div(class="form-group")
                     div(id="btndiv")
                         button(
