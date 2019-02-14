@@ -11,6 +11,7 @@ import { LoginComponent } from './componets/login/login.component';
 import { app_routing } from './app.routes';
 import { UsercreatorComponent } from './componets/usercreator/usercreator.component';
 import { VitacorComponent } from './componets/vitacor/vitacor.component';
+import { NotificatorComponent } from './componets/notificator/notificator.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { VitacorComponent } from './componets/vitacor/vitacor.component';
     LoginComponent,
     UsercreatorComponent,
     VitacorComponent,
+    NotificatorComponent,
   ],
   imports: [
     BrowserModule,

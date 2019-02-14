@@ -24,11 +24,6 @@ ngOnInit() {
     }
     }); 
 }
-myFunction(){
-  var x = document.getElementById("snackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
 
 menurouter(dir){
   this.router.navigateByUrl('/'+dir);
@@ -38,7 +33,7 @@ sessioncheck(){
     this.router.navigateByUrl('');
     this.loger = false;
   }else{
-    this.router.navigateByUrl('/user');
+    this.router.navigateByUrl('/vitacor');
     this.loger = true;
   }
 } 

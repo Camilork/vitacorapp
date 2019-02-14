@@ -63,7 +63,6 @@ export class PersonService {
       (Rate_by_hour == "") || (Rate_by_hour == null) || 
       (Rate_by_mount == "") || (Rate_by_mount == null)
     ){ 
-      alert("Los campos no pueden quedar vacios");
       return false;
     }
     return true;
