@@ -1,8 +1,9 @@
-import { Component, OnInit, Output ,EventEmitter, Input} from '@angular/core';
+import { Component ,OnInit, Output ,EventEmitter, Input,ViewChild} from '@angular/core';
 import { PersonService } from '../../services/person.service';
 import { Person } from '../../models/person';
 import { NgForm } from '@angular/forms';
 import {Router} from '@angular/router';
+import { NotificatorComponent } from '../notificator/notificator.component'
 
 @Component({
   selector: 'app-usercreator',
@@ -10,10 +11,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./usercreator.component.sass'],
   providers: [PersonService],
 })
-export class UsercreatorComponent implements OnInit {
 
+export class UsercreatorComponent implements OnInit {
+  @ViewChild(NotificatorComponent) notificatorComponent: NotificatorComponent;
   @Output() getUser = new EventEmitter;
-  @Input() singup : boolean = false;
+  @Input() singup : boolean = false; 
 
   passwordInputVisible : boolean = true;
   title : string = 'Edit User';
@@ -23,7 +25,6 @@ export class UsercreatorComponent implements OnInit {
   ngOnInit() {
     if(this.singup){ this.title='Create User' }
   }
-  
   editperson(person: Person) {
     this.personService.selectperson = person;
     this.personService.selectperson.password = null;
@@ -31,21 +32,29 @@ export class UsercreatorComponent implements OnInit {
     this.passwordInputVisible = false;
   }
   addperson(form?: NgForm) {   
-    if(this.personService.datatcheck(form)){return 0}
+    if(this.personService.datatcheck(form)){
+      this.notificatorComponent.notifi("Complete the required fields")
+      return 0}
     if(form.value._id) {
       this.personService.putPerson(form.value)
         .subscribe(res => {
+          console.log(res)
+          if(res == null){
+            this.notificatorComponent.notifi("Incorret data")
+            return 0
+          }
+          this.notificatorComponent.notifi("Update finished")
           this.resetForm(form);
         });
     } else {
       this.personService.postPerson(form.value)
       .subscribe(res => {
         if(res['success']){
-          alert(res['msg']);
+          this.notificatorComponent.notifi(res['msg'])
           this.resetForm(form);
           this.getUser.emit();
         }else{
-          alert('Error '+res['msg']);
+          this.notificatorComponent.notifi('Error ' + res['msg'])
         }
       });
     }

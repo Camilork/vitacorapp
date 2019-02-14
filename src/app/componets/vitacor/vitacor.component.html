@@ -1,4 +1,5 @@
 
+<app-notificator></app-notificator>
 <div class="container-fluid text-center">   
   <div class="row content">
     <div class="col-sm-6 sidenav">
@@ -54,7 +55,7 @@
           <div class="container-fluid text-center">   
             <div class="row content">
               <div class="card 50" *ngFor="let vita of vitacorService.vita index as i">
-                <h4 class="card-title">{{vita.initDate}} -> {{vita.finishDate}}</h4>
+                <h4 class="card-title">{{vita.initDate}}   {{vita.finishDate}}</h4>
                 <div class="card-body">
                   <p class="card-text">   
                     <label scope="col">{{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending  </label>
@@ -76,7 +77,7 @@
             <tbody *ngFor="let vita of vitacorService.vita index as i">
               <tr>
                 <td> 
-                  <label>{{vita.initDate}} -> {{vita.finishDate}}</label>
+                  <label>{{vita.initDate}}   {{vita.finishDate}}</label>
                 </td>
                 <td> 
                   <label>{{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending </label>
@@ -99,7 +100,7 @@
               <div id="labelMaterial">
                 <div class="group"> 
                   <input class="imp" type="text" required="required" name="task" #tasks="ngModel" [(ngModel)]="taskService.selecttask.task"/>
-                  <label class="lbl">Email</label>
+                  <label class="lbl">task</label>
                 </div>
               </div>
             </td>

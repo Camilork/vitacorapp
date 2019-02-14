@@ -1,3 +1,4 @@
+app-notificator
 div(class="container-fluid text-center")    
     div(class="row content")
         div(class="col-sm-6 sidenav")
@@ -78,7 +79,7 @@ div(class="container-fluid text-center")
                     div(class="container-fluid text-center")    
                         div(class="row content")
                                 div(class="card 50" ,*ngFor="let vita of vitacorService.vita index as i")
-                                        h4(class="card-title") {{vita.initDate}} -> {{vita.finishDate}}
+                                        h4(class="card-title") {{vita.initDate}}   {{vita.finishDate}}
                                         div(class="card-body")
                                             p(class="card-text")    
                                                 label(scope="col") {{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending  
@@ -96,7 +97,7 @@ div(class="container-fluid text-center")
                         tbody(*ngFor="let vita of vitacorService.vita index as i")
                             tr
                                 td 
-                                    label {{vita.initDate}} -> {{vita.finishDate}}
+                                    label {{vita.initDate}}   {{vita.finishDate}}
                                 td  
                                     label {{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending 
                                 td
@@ -139,7 +140,7 @@ div(class="container-fluid text-center")
                                     #tasks="ngModel",
                                     [(ngModel)]="taskService.selecttask.task"
                                     )
-                                    label(class="lbl") Email
+                                    label(class="lbl") task
                         td    
                             input(
                                 type="hidden", 

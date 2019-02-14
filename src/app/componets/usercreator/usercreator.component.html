@@ -1,4 +1,5 @@
 
+<app-notificator></app-notificator>
 <div class="card-img-top"> 
   <form #personaform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">
     <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="personService.selectperson._id"/>
@@ -15,7 +16,7 @@
             </div>
             <div id="labelMaterial"> 
               <div class="group">
-                <input class="imp" type="email" required="required" id="email" name="email" #email="ngModel" [(ngModel)]="personService.selectperson.email"/>
+                <input class="imp" type="text" required="required" id="email" name="email" #email="ngModel" [(ngModel)]="personService.selectperson.email"/>
                 <label class="lbl">Email  </label>
               </div>
             </div>

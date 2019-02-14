@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit , ViewChild} from '@angular/core'
 import { NgForm } from '@angular/forms'
 
 import { VitacorService } from '../../services/vitacor.service'
@@ -6,6 +6,8 @@ import { TaskService } from '../../services/task.service'
 
 import { Vita } from '../../models/vitacor'
 import { Task } from '../../models/task'
+
+import { NotificatorComponent } from '../notificator/notificator.component'
 
 @Component({
   selector: 'app-vitacor',
@@ -16,10 +18,13 @@ import { Task } from '../../models/task'
 
 export class VitacorComponent implements OnInit {
   constructor(public vitacorService : VitacorService,public taskService : TaskService) { }
-
+  
+  @ViewChild(NotificatorComponent) notificatorComponent: NotificatorComponent;
+  
   viewList = false
   idtask = null
-  iddata = 0
+  iddata = null
+  
 
   ngOnInit() { 
     this.getVita()
@@ -47,6 +52,7 @@ export class VitacorComponent implements OnInit {
     if(confirm('Are you sure you want to delete it?')){
       this.vitacorService.deleteVita(_id)
       .subscribe(res=>{
+        this.notificatorComponent.notifi("Successful delete")   
         this.resetForm()
         this.getVita()
       })
@@ -56,6 +62,11 @@ export class VitacorComponent implements OnInit {
     if(form.value._id){
       this.vitacorService.putVita(form.value)
       .subscribe(res=>{
+        if(res['status'] == 400 ){
+          this.notificatorComponent.notifi(res['msg']) 
+          return 0
+        }
+        this.notificatorComponent.notifi("Successful update") 
         this.resetForm(form)
         this.getVita()
       })
@@ -63,11 +74,11 @@ export class VitacorComponent implements OnInit {
       this.vitacorService.postVita(form.value)
       .subscribe(res=>{
         if(res['success']){
-          alert(res['msg'])
+          this.notificatorComponent.notifi(res['msg']) 
           this.resetForm(form)
           this.getVita()
         }else{
-          alert('Error'+ res['msg'])
+          this.notificatorComponent.notifi('Error '+ res['msg']) 
         }
       })
     }
@@ -87,8 +98,12 @@ export class VitacorComponent implements OnInit {
     .subscribe(res=>{
         if(!disableView){
           this.taskService.task = res['data'] as Task[]
+          this.idtask = id
+          this.setTaskdata(vitaId,res['countTotal'],res['countFinish'])
+          return 0
         }
         this.setTaskdata(vitaId,res['countTotal'],res['countFinish'])
+        this.idtask = null
     })
   }
   editTask(task: Task){
@@ -117,15 +132,15 @@ export class VitacorComponent implements OnInit {
         this.taskService.postTask(form.value)
         .subscribe(res=>{
           if(res['success']){
-            alert(res['msg'])
+            this.notificatorComponent.notifi(res['msg'])   
             this.resetFormTask(form)
             this.getTaskCount(this.idtask,this.iddata)
           }else{
-            alert('Error'+ res['msg'])
+            this.notificatorComponent.notifi('Error Please input the task')   
           }
         })
       }else{
-        alert("Please select one day")
+        this.notificatorComponent.notifi("Please select one day")   
       }
     }
   }
@@ -134,7 +149,6 @@ export class VitacorComponent implements OnInit {
       form.reset()
       this.taskService.selecttask = new Task
     }else{
-      console.log('datas')
       this.taskService.task = null
     }
   }

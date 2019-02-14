@@ -1,3 +1,4 @@
+app-notificator
 div(class="card-img-top") 
     form(#personaform="ngForm",appnoautocomplete="", autocomplete="off",  (keydown.enter)="$event.preventDefault()")
         input( 
@@ -27,7 +28,7 @@ div(class="card-img-top")
                         div(id="labelMaterial") 
                             div(class="group")
                                 input(
-                                type="email",
+                                type="text",
                                 required class="imp", 
                                 id="email", 
                                 name="email", 
