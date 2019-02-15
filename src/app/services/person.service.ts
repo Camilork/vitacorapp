@@ -6,12 +6,15 @@ import { NgForm } from '@angular/forms';
 
 @Injectable()
 export class PersonService {
-  selectperson : Person;
-  person : Person[];
-  server: Config;
+  selectperson : Person
+  person : Person[]
+  personbackup : Person
+  server: Config
   constructor(public http: HttpClient) { 
-    this.selectperson = new Person();
+    this.selectperson = new Person()
+    this.personbackup = new Person()
     this.server = new Config;
+
   }
   
   getPerson(){

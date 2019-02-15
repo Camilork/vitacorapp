@@ -15,7 +15,7 @@ import { NotificatorComponent } from '../notificator/notificator.component'
   styleUrls: ['./vitacor.component.sass'],
   providers: [VitacorService,TaskService]
 })
-
+ 
 export class VitacorComponent implements OnInit {
   constructor(public vitacorService : VitacorService,public taskService : TaskService) { }
   
@@ -24,7 +24,7 @@ export class VitacorComponent implements OnInit {
   viewList = false
   idtask = null
   iddata = null
-  
+  vitacorBackup : Vita
 
   ngOnInit() { 
     this.getVita()
@@ -46,7 +46,7 @@ export class VitacorComponent implements OnInit {
     })
   }
   editVita(vita: Vita){
-    this.vitacorService.selectvitacor = vita;
+    this.vitacorService.selectvitacor = Object.assign({}, vita);
   }
   deleteVita(_id: string){
     if(confirm('Are you sure you want to delete it?')){
@@ -87,7 +87,6 @@ export class VitacorComponent implements OnInit {
     if(form){
       form.reset()
       this.vitacorService.selectvitacor = new Vita
-      this.getVita()
     }
   }
   
