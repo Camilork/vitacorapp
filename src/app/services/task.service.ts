@@ -27,6 +27,10 @@ export class TaskService {
   deleteTask(_id: string){
     return this.http.delete(this.server.server+"/task"+`/${_id}`)
   }
+  checkData(task : Task){
+    let msg = 'please input the '
+    if(!task.task) return msg += "task" 
+  }
 }
 
 

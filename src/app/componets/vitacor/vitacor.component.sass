@@ -30,7 +30,8 @@
         width: 100%;
 #cardData
     font-size: large;
-    height: 350px;
+    height: 300px;
+    border-top: none;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -47,7 +48,28 @@
             margin-bottom: -2%;
         a
             float: right;
-            margin-right: 4%; 
+            margin-right: 4%;
+    @media screen and(max-width: 1300px)
+        width: 100%;
+#cardDatafind
+    background: rgba(0, 0, 0, 0.5);
+    width: 70%;
+    border-top: none;
+    margin: -2% auto 0% auto;
+    a
+        i
+            font-size: medium;
+            padding-bottom: 2%;
+    input 
+        background: rgba(0, 0, 0, 0);
+        margin: 4px;
+        border-bottom: 1%; 
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px; 
+        float: right;
+        width: 40%;
+
     @media screen and(max-width: 1300px)
         width: 100%;
 #tbltask
@@ -60,6 +82,7 @@
         margin: 2%;
         float: left;
         +inputborder()
+
 .taskdiv
     height: 410px;
     overflow-y: scroll;

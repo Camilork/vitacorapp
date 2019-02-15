@@ -26,4 +26,12 @@ export class VitacorService {
   deleteVita(_id: string){
     return this.http.delete(this.server.server+"/vita"+`/${_id}`)
   }
+  checkData(vita : Vita){
+    let msg = 'please input the '
+    if(!vita.idTasks) return msg += "id task" 
+    if(!vita.initDate) return msg += "init date" 
+    if(!vita.finishDate) return msg += msg += "finish date"
+    if(!vita.lid) return msg += "lid"
+    if(!vita.note) return msg += "note"
+  }
 }

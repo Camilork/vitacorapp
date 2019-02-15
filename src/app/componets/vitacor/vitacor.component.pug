@@ -70,10 +70,12 @@ div(class="container-fluid text-center")
                                             id="button"
                                             value="Send",
                                             (click)="createVita(vitaform)")  
-            div(class="card" id="cardData")
+            div(class="card" id="cardDatafind")
+                input(#buscador="", type="text",(keyup)="findData(buscador)", value = "")
                 a("(click)"="listViewer()")
                     i(class="glyphicon glyphicon-list btnlist", *ngIf="!viewList")
                     i(class="glyphicon glyphicon-th-large btnlist", *ngIf="viewList")
+            div(class="card" id="cardData")
                 div(class="card-body", *ngIf="!viewList")
                     div(class="card-columns")
                     div(class="container-fluid text-center")    
@@ -88,28 +90,34 @@ div(class="container-fluid text-center")
                                             p(class="card-text") 
                                                 label(scope="col") Note: {{vita.note}}
                                                 label Id: {{vita.idTasks}}
-                                                    a((click)="deleteVita(vita._id)")
+                                                    a((click)="deleteVita(vita._id,i)")
                                                         i(class="glyphicon glyphicon-trash") 
                                                     a("(click)"="getTaskCount(vita.idTasks,i);editVita(vita)")
                                                         i(class="glyphicon glyphicon-edit") 
                 div(class="card-body", *ngIf="viewList")
                     table(class="table table-condensed ")
+                        thead 
+                            tr
+                                th Id
+                                th Init Date
+                                th Tasks
                         tbody(*ngFor="let vita of vitacorService.vita index as i")
                             tr
                                 td 
-                                    label {{vita.initDate}}   {{vita.finishDate}}
+                                    label {{vita.idTasks}}   
+                                td 
+                                    label {{vita.initDate}}
                                 td  
-                                    label {{vita.taskCant}} Tasks. {{vita.taskFinished}} Pending 
+                                    label {{vita.taskCant}} Tasks. {{vita.taskFinished}} P. 
                                 td
                                     a("(click)"="getTaskCount(vita.idTasks,i);editVita(vita)")
                                         i(class="glyphicon glyphicon-edit")
-                                    a((click)="deleteVita(vita._id)")
+                                    a((click)="deleteVita(vita._id,i)")
                                         i(class="glyphicon glyphicon-trash")                                                                      
         div(class="col-sm-6 text-left") 
-            form(#taskform="ngForm",
+            form(#taskform="ngForm", ng-submit="createTask(taskform)",
                 appnoautocomplete="", 
-                autocomplete="off",  
-                (keydown.enter)="$event.preventDefault()"
+                autocomplete="off"
                 )
                 table(class="table table-sm " id="tbltask")
                     tbody
